@@ -1,0 +1,1776 @@
+/*
+
+HUELLITAS ETERNAS
+2D — scroll.css
+===============
+
+Sistema visual y funcional relacionado con el desplazamiento
+de la página.
+
+Este archivo trabaja junto con:
+styles.css
+botones.css
+animaciones.css
+
+Incluye:
+
+* Scroll suave
+* Barra de desplazamiento personalizada
+* Desplazamiento por anclas
+* Indicador de progreso
+* Botón volver arriba
+* Efectos relacionados con scroll
+* Secciones que aparecen durante el desplazamiento
+* Scroll horizontal
+* Ajustes para dispositivos móviles
+* Compatibilidad con movimiento reducido
+
+IMPORTANTE:
+Este archivo NO sustituye styles.css.
+Este archivo NO sustituye animaciones.css.
+==========================================
+
+*/
+
+/* ==========================================================
+01. SCROLL SUAVE
+========================================================== */
+
+html {
+scroll-behavior: smooth;
+}
+
+/* ==========================================================
+02. AJUSTE PARA ANCLAS
+========================================================== */
+
+section,
+[id] {
+scroll-margin-top: 90px;
+}
+
+/* ==========================================================
+03. BARRA DE SCROLL GENERAL
+========================================================== */
+
+html {
+scrollbar-width: thin;
+
+scrollbar-color:
+    var(--color-rosa)
+    var(--color-crema);
+
+}
+
+/* ==========================================================
+04. BARRA DE SCROLL — CHROME / EDGE / SAFARI
+========================================================== */
+
+::-webkit-scrollbar {
+width: 10px;
+
+
+height: 10px;
+
+
+}
+
+/* ==========================================================
+05. FONDO DE LA BARRA
+========================================================== */
+
+::-webkit-scrollbar-track {
+background:
+var(--color-crema);
+
+
+border-radius:
+    999px;
+
+
+}
+
+/* ==========================================================
+06. PARTE MÓVIL DE LA BARRA
+========================================================== */
+
+::-webkit-scrollbar-thumb {
+background:
+var(--color-rosa);
+
+
+border:
+    2px solid
+    var(--color-crema);
+
+border-radius:
+    999px;
+
+transition:
+    background
+    0.3s ease;
+
+
+}
+
+/* ==========================================================
+07. HOVER DE LA BARRA
+========================================================== */
+
+::-webkit-scrollbar-thumb:hover {
+background:
+var(--color-rosa-oscuro);
+}
+
+/* ==========================================================
+08. BARRA DE PROGRESO SUPERIOR
+========================================================== */
+
+.scroll-progress {
+position: fixed;
+
+
+top: 0;
+
+left: 0;
+
+z-index: 9999;
+
+width: 100%;
+
+height: 4px;
+
+pointer-events: none;
+
+background:
+    transparent;
+
+
+}
+
+/* ==========================================================
+09. INDICADOR DEL PROGRESO
+========================================================== */
+
+.scroll-progress-bar {
+width: 0;
+
+
+height: 100%;
+
+background:
+    linear-gradient(
+        90deg,
+        var(--color-rosa),
+        var(--color-rosa-oscuro)
+    );
+
+transform-origin:
+    left center;
+
+transition:
+    width
+    0.08s
+    linear;
+
+
+}
+
+/* ==========================================================
+10. CONTENEDOR DEL INDICADOR
+========================================================== */
+
+.scroll-indicator {
+position: fixed;
+
+
+top: 50%;
+
+right: 22px;
+
+z-index: 1000;
+
+display: flex;
+
+flex-direction: column;
+
+align-items: center;
+
+gap: 10px;
+
+transform:
+    translateY(-50%);
+
+
+}
+
+/* ==========================================================
+11. PUNTOS DEL INDICADOR
+========================================================== */
+
+.scroll-indicator-dot {
+width: 8px;
+
+
+height: 8px;
+
+border-radius: 50%;
+
+background:
+    var(--color-rosa-claro);
+
+border:
+    1px solid
+    var(--color-rosa);
+
+transition:
+    transform
+    0.3s ease,
+    background
+    0.3s ease,
+    box-shadow
+    0.3s ease;
+
+
+}
+
+/* ==========================================================
+12. PUNTO ACTIVO
+========================================================== */
+
+.scroll-indicator-dot.active {
+background:
+var(--color-rosa);
+
+
+transform:
+    scale(1.4);
+
+box-shadow:
+    0 0 0 4px
+    rgba(
+        217,
+        143,
+        156,
+        0.12
+    );
+
+
+}
+
+/* ==========================================================
+13. BOTÓN VOLVER ARRIBA
+========================================================== */
+
+.back-to-top {
+position: fixed;
+
+
+right: 24px;
+
+bottom: 24px;
+
+z-index: 1000;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+width: 48px;
+
+height: 48px;
+
+border: none;
+
+border-radius: 50%;
+
+background:
+    var(--color-rosa);
+
+color:
+    var(--color-blanco);
+
+cursor: pointer;
+
+opacity: 0;
+
+visibility: hidden;
+
+transform:
+    translateY(15px);
+
+transition:
+    opacity
+    0.3s ease,
+    visibility
+    0.3s ease,
+    transform
+    0.3s ease,
+    background
+    0.3s ease,
+    box-shadow
+    0.3s ease;
+
+
+}
+
+/* ==========================================================
+14. BOTÓN VISIBLE
+========================================================== */
+
+.back-to-top.visible {
+opacity: 1;
+
+
+visibility: visible;
+
+transform:
+    translateY(0);
+
+
+}
+
+/* ==========================================================
+15. HOVER BOTÓN ARRIBA
+========================================================== */
+
+.back-to-top:hover {
+background:
+var(--color-rosa-oscuro);
+
+
+transform:
+    translateY(-4px);
+
+box-shadow:
+    0 10px 25px
+    rgba(
+        50,
+        38,
+        36,
+        0.15
+    );
+
+
+}
+
+/* ==========================================================
+16. ICONO DEL BOTÓN
+========================================================== */
+
+.back-to-top-icon {
+font-size:
+1.25rem;
+
+
+line-height:
+    1;
+
+transition:
+    transform
+    0.3s ease;
+
+
+}
+
+/* ==========================================================
+17. MOVIMIENTO DEL ICONO
+========================================================== */
+
+.back-to-top:hover
+.back-to-top-icon {
+transform:
+translateY(-2px);
+}
+
+/* ==========================================================
+18. SECCIONES REVELADAS POR SCROLL
+========================================================== */
+
+.scroll-reveal {
+opacity: 0;
+
+
+transform:
+    translateY(35px);
+
+transition:
+    opacity
+    0.8s ease,
+    transform
+    0.8s ease;
+
+
+}
+
+/* ==========================================================
+19. SECCIÓN REVELADA
+========================================================== */
+
+.scroll-reveal.is-visible {
+opacity: 1;
+
+
+transform:
+    translateY(0);
+
+
+}
+
+/* ==========================================================
+20. REVELACIÓN DESDE IZQUIERDA
+========================================================== */
+
+.scroll-reveal-left {
+opacity: 0;
+
+
+transform:
+    translateX(-45px);
+
+transition:
+    opacity
+    0.8s ease,
+    transform
+    0.8s ease;
+
+
+}
+
+.scroll-reveal-left.is-visible {
+opacity: 1;
+
+
+transform:
+    translateX(0);
+
+
+}
+
+/* ==========================================================
+21. REVELACIÓN DESDE DERECHA
+========================================================== */
+
+.scroll-reveal-right {
+opacity: 0;
+
+
+transform:
+    translateX(45px);
+
+transition:
+    opacity
+    0.8s ease,
+    transform
+    0.8s ease;
+
+
+}
+
+.scroll-reveal-right.is-visible {
+opacity: 1;
+
+
+transform:
+    translateX(0);
+
+
+}
+
+/* ==========================================================
+22. REVELACIÓN CON ESCALA
+========================================================== */
+
+.scroll-reveal-scale {
+opacity: 0;
+
+
+transform:
+    scale(0.92);
+
+transition:
+    opacity
+    0.8s ease,
+    transform
+    0.8s ease;
+
+
+}
+
+.scroll-reveal-scale.is-visible {
+opacity: 1;
+
+
+transform:
+    scale(1);
+
+
+}
+
+/* ==========================================================
+23. REVELACIÓN DESDE ARRIBA
+========================================================== */
+
+.scroll-reveal-down {
+opacity: 0;
+
+
+transform:
+    translateY(-35px);
+
+transition:
+    opacity
+    0.8s ease,
+    transform
+    0.8s ease;
+
+
+}
+
+.scroll-reveal-down.is-visible {
+opacity: 1;
+
+
+transform:
+    translateY(0);
+
+
+}
+
+/* ==========================================================
+24. REVELACIÓN CON RETRASO
+========================================================== */
+
+.scroll-delay-1 {
+transition-delay:
+0.1s;
+}
+
+.scroll-delay-2 {
+transition-delay:
+0.2s;
+}
+
+.scroll-delay-3 {
+transition-delay:
+0.3s;
+}
+
+.scroll-delay-4 {
+transition-delay:
+0.4s;
+}
+
+.scroll-delay-5 {
+transition-delay:
+0.5s;
+}
+
+/* ==========================================================
+25. PARALLAX
+========================================================== */
+
+.parallax {
+will-change:
+transform;
+}
+
+/* ==========================================================
+26. ELEMENTO PARALLAX SUAVE
+========================================================== */
+
+.parallax-soft {
+transform:
+translateY(
+var(--parallax-offset, 0)
+);
+}
+
+/* ==========================================================
+27. CONTENEDOR PARALLAX
+========================================================== */
+
+.parallax-container {
+position: relative;
+
+
+overflow: hidden;
+
+
+}
+
+/* ==========================================================
+28. FONDO PARALLAX
+========================================================== */
+
+.parallax-background {
+position: absolute;
+
+
+inset: -10%;
+
+width: 120%;
+
+height: 120%;
+
+object-fit: cover;
+
+pointer-events: none;
+
+will-change:
+    transform;
+
+
+}
+
+/* ==========================================================
+29. SECCIONES CON SCROLL SNAP
+========================================================== */
+
+.scroll-snap-container {
+scroll-snap-type:
+y proximity;
+}
+
+/* ==========================================================
+30. ELEMENTO SNAP
+========================================================== */
+
+.scroll-snap-item {
+scroll-snap-align:
+start;
+}
+
+/* ==========================================================
+31. SCROLL HORIZONTAL
+========================================================== */
+
+.horizontal-scroll {
+display: flex;
+
+
+overflow-x: auto;
+
+overflow-y: hidden;
+
+gap: 20px;
+
+scroll-behavior:
+    smooth;
+
+scroll-snap-type:
+    x proximity;
+
+scrollbar-width:
+    thin;
+
+
+}
+
+/* ==========================================================
+32. ELEMENTOS HORIZONTALES
+========================================================== */
+
+.horizontal-scroll > * {
+flex:
+0 0 auto;
+
+
+scroll-snap-align:
+    start;
+
+
+}
+
+/* ==========================================================
+33. SCROLL HORIZONTAL OCULTO
+========================================================== */
+
+.horizontal-scroll-hidden {
+display: flex;
+
+
+overflow-x: auto;
+
+overflow-y: hidden;
+
+gap: 20px;
+
+scrollbar-width:
+    none;
+
+-ms-overflow-style:
+    none;
+
+
+}
+
+.horizontal-scroll-hidden::-webkit-scrollbar {
+display:
+none;
+}
+
+/* ==========================================================
+34. CONTENEDOR DE CARRUSEL
+========================================================== */
+
+.scroll-carousel {
+position: relative;
+
+
+overflow: hidden;
+
+
+}
+
+/* ==========================================================
+35. CONTENIDO DEL CARRUSEL
+========================================================== */
+
+.scroll-carousel-track {
+display: flex;
+
+
+gap: 20px;
+
+overflow-x: auto;
+
+scroll-behavior:
+    smooth;
+
+scrollbar-width:
+    none;
+
+
+}
+
+.scroll-carousel-track::-webkit-scrollbar {
+display:
+none;
+}
+
+/* ==========================================================
+36. SOMBRA LATERAL DEL SCROLL
+========================================================== */
+
+.scroll-shadow {
+position: relative;
+}
+
+.scroll-shadow::before,
+.scroll-shadow::after {
+content: "";
+
+
+position: absolute;
+
+top: 0;
+
+bottom: 0;
+
+width: 35px;
+
+z-index: 2;
+
+pointer-events: none;
+
+
+}
+
+.scroll-shadow::before {
+left: 0;
+
+
+background:
+    linear-gradient(
+        90deg,
+        var(--color-crema),
+        transparent
+    );
+
+
+}
+
+.scroll-shadow::after {
+right: 0;
+
+
+background:
+    linear-gradient(
+        270deg,
+        var(--color-crema),
+        transparent
+    );
+
+
+}
+
+/* ==========================================================
+37. SEPARADOR DE SCROLL
+========================================================== */
+
+.scroll-section-divider {
+position: relative;
+
+
+height: 1px;
+
+width: 80%;
+
+margin:
+    0 auto;
+
+overflow: hidden;
+
+background:
+    var(--color-rosa-claro);
+
+
+}
+
+.scroll-section-divider::after {
+content: "";
+
+
+position: absolute;
+
+top: 0;
+
+left: -100%;
+
+width: 50%;
+
+height: 100%;
+
+background:
+    var(--color-rosa);
+
+animation:
+    scrollDivider
+    4s
+    ease-in-out
+    infinite;
+
+
+}
+
+@keyframes scrollDivider {
+
+
+0% {
+    left:
+        -50%;
+}
+
+50% {
+    left:
+        100%;
+}
+
+100% {
+    left:
+        100%;
+}
+
+
+}
+
+/* ==========================================================
+38. INDICADOR "DESLIZA"
+========================================================== */
+
+.scroll-down-indicator {
+display: flex;
+
+
+flex-direction: column;
+
+align-items: center;
+
+gap: 8px;
+
+color:
+    var(--color-marron-suave);
+
+user-select:
+    none;
+
+
+}
+
+/* ==========================================================
+39. TEXTO DEL INDICADOR
+========================================================== */
+
+.scroll-down-text {
+font-size:
+0.75rem;
+
+
+letter-spacing:
+    0.08em;
+
+text-transform:
+    uppercase;
+
+
+}
+
+/* ==========================================================
+40. FLECHA DEL INDICADOR
+========================================================== */
+
+.scroll-down-arrow {
+width: 12px;
+
+
+height: 12px;
+
+border-right:
+    2px solid
+    var(--color-rosa);
+
+border-bottom:
+    2px solid
+    var(--color-rosa);
+
+transform:
+    rotate(45deg);
+
+animation:
+    scrollArrow
+    1.8s
+    ease-in-out
+    infinite;
+
+
+}
+
+@keyframes scrollArrow {
+
+
+0% {
+    opacity: 0;
+
+    transform:
+        translateY(-5px)
+        rotate(45deg);
+}
+
+40% {
+    opacity: 1;
+}
+
+70% {
+    opacity: 1;
+
+    transform:
+        translateY(5px)
+        rotate(45deg);
+}
+
+100% {
+    opacity: 0;
+
+    transform:
+        translateY(10px)
+        rotate(45deg);
+}
+
+
+}
+
+/* ==========================================================
+41. ESTADO DE SCROLL DEL HEADER
+========================================================== */
+
+.header-scroll {
+transition:
+background
+0.3s ease,
+box-shadow
+0.3s ease,
+backdrop-filter
+0.3s ease;
+}
+
+/* ==========================================================
+42. HEADER CUANDO SE DESPLAZA
+========================================================== */
+
+.header-scroll.is-scrolled {
+box-shadow:
+0 8px 25px
+rgba(
+50,
+38,
+36,
+0.08
+);
+
+
+backdrop-filter:
+    blur(10px);
+
+
+}
+
+/* ==========================================================
+43. OCULTAR HEADER AL BAJAR
+========================================================== */
+
+.header-hide-on-scroll {
+transition:
+transform
+0.35s ease;
+}
+
+.header-hide-on-scroll.is-hidden {
+transform:
+translateY(-100%);
+}
+
+/* ==========================================================
+44. MOSTRAR HEADER AL SUBIR
+========================================================== */
+
+.header-hide-on-scroll.is-visible {
+transform:
+translateY(0);
+}
+
+/* ==========================================================
+45. BLOQUEAR SCROLL
+========================================================== */
+
+.no-scroll {
+overflow:
+hidden !important;
+
+
+height:
+    100vh;
+
+height:
+    100dvh;
+
+
+}
+
+/* ==========================================================
+46. SCROLL EN MODAL
+========================================================== */
+
+.modal-scroll {
+max-height:
+80vh;
+
+
+overflow-y:
+    auto;
+
+scrollbar-width:
+    thin;
+
+scrollbar-color:
+    var(--color-rosa)
+    transparent;
+
+
+}
+
+/* ==========================================================
+47. SCROLL INTERNO
+========================================================== */
+
+.inner-scroll {
+overflow-y:
+auto;
+
+
+overscroll-behavior:
+    contain;
+
+
+}
+
+/* ==========================================================
+48. PREVENIR DESBORDAMIENTO HORIZONTAL
+========================================================== */
+
+body {
+overflow-x:
+hidden;
+}
+
+/* ==========================================================
+49. ANCLA ACTIVA
+========================================================== */
+
+.anchor-active {
+color:
+var(--color-rosa-oscuro);
+
+
+transition:
+    color
+    0.3s ease;
+
+
+}
+
+/* ==========================================================
+50. NAVEGACIÓN SEGÚN SCROLL
+========================================================== */
+
+.scroll-nav-link {
+position: relative;
+
+
+transition:
+    color
+    0.3s ease;
+
+
+}
+
+.scroll-nav-link::after {
+content: "";
+
+
+position: absolute;
+
+left: 50%;
+
+bottom: -6px;
+
+width: 0;
+
+height: 2px;
+
+background:
+    var(--color-rosa);
+
+transform:
+    translateX(-50%);
+
+transition:
+    width
+    0.3s ease;
+
+
+}
+
+.scroll-nav-link.active {
+color:
+var(--color-rosa-oscuro);
+}
+
+.scroll-nav-link.active::after {
+width:
+70%;
+}
+
+/* ==========================================================
+51. NÚMERO DE SECCIÓN
+========================================================== */
+
+.scroll-section-number {
+display: inline-flex;
+
+
+align-items: center;
+
+justify-content: center;
+
+width: 34px;
+
+height: 34px;
+
+border-radius:
+    50%;
+
+background:
+    var(--color-rosa-claro);
+
+color:
+    var(--color-rosa-oscuro);
+
+transition:
+    transform
+    0.3s ease,
+    background
+    0.3s ease;
+
+
+}
+
+.scroll-section-number.active {
+background:
+var(--color-rosa);
+
+
+color:
+    var(--color-blanco);
+
+transform:
+    scale(1.08);
+
+
+}
+
+/* ==========================================================
+52. SCROLL DE GALERÍA
+========================================================== */
+
+.gallery-scroll {
+display: flex;
+
+
+gap: 18px;
+
+overflow-x:
+    auto;
+
+padding:
+    10px 5px 20px;
+
+scroll-snap-type:
+    x mandatory;
+
+scrollbar-width:
+    thin;
+
+
+}
+
+.gallery-scroll > * {
+flex:
+0 0
+min(
+82vw,
+360px
+);
+
+
+scroll-snap-align:
+    center;
+
+
+}
+
+/* ==========================================================
+53. SCROLL DE TESTIMONIOS
+========================================================== */
+
+.testimonials-scroll {
+display: flex;
+
+
+gap: 20px;
+
+overflow-x:
+    auto;
+
+padding:
+    10px 5px 25px;
+
+scroll-snap-type:
+    x proximity;
+
+scrollbar-width:
+    thin;
+
+
+}
+
+.testimonials-scroll > * {
+flex:
+0 0
+min(
+85vw,
+380px
+);
+
+
+scroll-snap-align:
+    start;
+
+
+}
+
+/* ==========================================================
+54. SCROLL DE PRODUCTOS
+========================================================== */
+
+.products-scroll {
+display: flex;
+
+
+gap: 20px;
+
+overflow-x:
+    auto;
+
+padding:
+    10px 5px 25px;
+
+scroll-snap-type:
+    x mandatory;
+
+scrollbar-width:
+    thin;
+
+
+}
+
+.products-scroll > * {
+flex:
+0 0
+min(
+80vw,
+330px
+);
+
+
+scroll-snap-align:
+    center;
+
+
+}
+
+/* ==========================================================
+55. EFECTO DE ENTRADA AL LLEGAR
+========================================================== */
+
+.scroll-fade {
+opacity: 0;
+
+
+transition:
+    opacity
+    0.9s ease;
+
+
+}
+
+.scroll-fade.active {
+opacity:
+1;
+}
+
+/* ==========================================================
+56. EFECTO DE DESLIZAMIENTO AL LLEGAR
+========================================================== */
+
+.scroll-slide {
+opacity: 0;
+
+
+transform:
+    translateY(25px);
+
+transition:
+    opacity
+    0.8s ease,
+    transform
+    0.8s ease;
+
+
+}
+
+.scroll-slide.active {
+opacity:
+1;
+
+
+transform:
+    translateY(0);
+
+
+}
+
+/* ==========================================================
+57. EFECTO DE ESCALA AL LLEGAR
+========================================================== */
+
+.scroll-scale {
+opacity: 0;
+
+
+transform:
+    scale(0.95);
+
+transition:
+    opacity
+    0.8s ease,
+    transform
+    0.8s ease;
+
+
+}
+
+.scroll-scale.active {
+opacity:
+1;
+
+
+transform:
+    scale(1);
+
+
+}
+
+/* ==========================================================
+58. PROGRESO CIRCULAR
+========================================================== */
+
+.scroll-circle {
+position: relative;
+
+
+width: 52px;
+
+height: 52px;
+
+
+}
+
+.scroll-circle svg {
+width: 100%;
+
+
+height: 100%;
+
+transform:
+    rotate(-90deg);
+
+
+}
+
+.scroll-circle-track {
+fill:
+none;
+
+
+stroke:
+    var(--color-rosa-claro);
+
+stroke-width:
+    4;
+
+
+}
+
+.scroll-circle-progress {
+fill:
+none;
+
+
+stroke:
+    var(--color-rosa);
+
+stroke-width:
+    4;
+
+stroke-linecap:
+    round;
+
+stroke-dasharray:
+    100;
+
+stroke-dashoffset:
+    100;
+
+transition:
+    stroke-dashoffset
+    0.2s linear;
+
+
+}
+
+/* ==========================================================
+59. BOTÓN CIRCULAR DE PROGRESO
+========================================================== */
+
+.scroll-progress-button {
+position: fixed;
+
+
+right: 24px;
+
+bottom: 24px;
+
+z-index: 1000;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+width: 52px;
+
+height: 52px;
+
+padding: 0;
+
+border: none;
+
+border-radius:
+    50%;
+
+background:
+    var(--color-crema);
+
+cursor: pointer;
+
+box-shadow:
+    0 8px 25px
+    rgba(
+        50,
+        38,
+        36,
+        0.12
+    );
+
+
+}
+
+/* ==========================================================
+60. ICONO DENTRO DEL PROGRESO
+========================================================== */
+
+.scroll-progress-button-icon {
+position: absolute;
+
+
+font-size:
+    1rem;
+
+color:
+    var(--color-rosa-oscuro);
+
+
+}
+
+/* ==========================================================
+61. SCROLL TOUCH
+========================================================== */
+
+.touch-scroll {
+-webkit-overflow-scrolling:
+touch;
+
+
+overscroll-behavior-x:
+    contain;
+
+
+}
+
+/* ==========================================================
+62. MOBILE SCROLL
+========================================================== */
+
+@media (max-width: 768px) {
+
+
+html {
+    scrollbar-width:
+        auto;
+}
+
+
+::-webkit-scrollbar {
+    width:
+        6px;
+
+    height:
+        6px;
+}
+
+
+section,
+[id] {
+    scroll-margin-top:
+        75px;
+}
+
+
+.scroll-indicator {
+    display:
+        none;
+}
+
+
+.back-to-top {
+    right:
+        16px;
+
+    bottom:
+        16px;
+
+    width:
+        44px;
+
+    height:
+        44px;
+}
+
+
+.scroll-progress-button {
+    right:
+        16px;
+
+    bottom:
+        16px;
+
+    width:
+        48px;
+
+    height:
+        48px;
+}
+
+
+.horizontal-scroll {
+    gap:
+        14px;
+}
+
+
+.gallery-scroll {
+    gap:
+        14px;
+}
+
+
+.testimonials-scroll {
+    gap:
+        14px;
+}
+
+
+.products-scroll {
+    gap:
+        14px;
+}
+
+
+}
+
+/* ==========================================================
+63. MOBILE PEQUEÑO
+========================================================== */
+
+@media (max-width: 480px) {
+
+
+section,
+[id] {
+    scroll-margin-top:
+        68px;
+}
+
+
+.back-to-top {
+    width:
+        42px;
+
+    height:
+        42px;
+
+    right:
+        14px;
+
+    bottom:
+        14px;
+}
+
+
+.scroll-progress-button {
+    width:
+        46px;
+
+    height:
+        46px;
+
+    right:
+        14px;
+
+    bottom:
+        14px;
+}
+
+
+.scroll-down-text {
+    font-size:
+        0.68rem;
+}
+
+
+}
+
+/* ==========================================================
+64. PREFERENCIA DE MOVIMIENTO REDUCIDO
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+
+html {
+    scroll-behavior:
+        auto;
+}
+
+
+*,
+*::before,
+*::after {
+    scroll-behavior:
+        auto !important;
+
+    transition-duration:
+        0.01ms !important;
+
+    animation-duration:
+        0.01ms !important;
+
+    animation-iteration-count:
+        1 !important;
+}
+
+
+.scroll-down-arrow,
+.scroll-section-divider::after {
+    animation:
+        none !important;
+}
+
+
+.scroll-reveal,
+.scroll-reveal-left,
+.scroll-reveal-right,
+.scroll-reveal-scale,
+.scroll-reveal-down,
+.scroll-fade,
+.scroll-slide,
+.scroll-scale {
+    opacity:
+        1;
+
+    transform:
+        none;
+
+    transition:
+        none;
+}
+
+}
+
+/* ==========================================================
+FIN DE 2D — scroll.css
+============================================================ */

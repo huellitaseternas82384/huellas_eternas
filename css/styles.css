@@ -1,0 +1,2806 @@
+/*
+============================================================
+HUELLITAS ETERNAS
+PARTE 2A — styles.css
+============================================================
+
+Archivo principal de estilos.
+
+Responsabilidades:
+- Variables globales
+- Reset
+- Tipografía
+- Contenedores
+- Header
+- Navegación
+- Hero
+- Secciones
+- Tarjetas
+- Formularios
+- FAQ
+- Memorial
+- Contacto
+- CTA
+- Footer
+- Responsive base
+
+IMPORTANTE:
+Este archivo es la BASE VISUAL del proyecto.
+
+Los estilos especializados se añadirán posteriormente
+en los siguientes archivos CSS:
+
+2B → components.css
+2C → animations.css
+2D → responsive.css
+
+NO modificar los HTML para conectar estos archivos.
+============================================================
+*/
+
+
+/* ==========================================================
+   01. VARIABLES GLOBALES
+   ========================================================== */
+
+:root {
+
+    /* ------------------------------------------------------
+       COLORES PRINCIPALES
+       ------------------------------------------------------ */
+
+    --color-rosa: #d98f9c;
+
+    --color-rosa-claro: #f7e8e4;
+
+    --color-rosa-suave: #fceff0;
+
+    --color-rosa-oscuro: #a95f6d;
+
+
+    /* ------------------------------------------------------
+       COLORES CREMA
+       ------------------------------------------------------ */
+
+    --color-crema: #fffaf5;
+
+    --color-crema-oscuro: #f5eadf;
+
+
+    /* ------------------------------------------------------
+       COLORES NEUTROS
+       ------------------------------------------------------ */
+
+    --color-blanco: #ffffff;
+
+    --color-negro: #000000;
+
+    --color-texto: #4c3d3b;
+
+    --color-texto-suave: #756764;
+
+    --color-texto-claro: #9b8b87;
+
+    --color-borde: #eadbd7;
+
+
+    /* ------------------------------------------------------
+       COLORES COMPLEMENTARIOS
+       ------------------------------------------------------ */
+
+    --color-verde-suave: #dfeee5;
+
+    --color-verde: #6f9b7f;
+
+    --color-dorado: #c9a66b;
+
+    --color-error: #b85c62;
+
+    --color-exito: #5f9271;
+
+
+    /* ------------------------------------------------------
+       TIPOGRAFÍAS
+       ------------------------------------------------------ */
+
+    --fuente-principal: "Poppins", sans-serif;
+
+    --fuente-secundaria: "Inter", sans-serif;
+
+
+    /* ------------------------------------------------------
+       TAMAÑOS DE TEXTO
+       ------------------------------------------------------ */
+
+    --texto-xs: 0.75rem;
+
+    --texto-sm: 0.875rem;
+
+    --texto-base: 1rem;
+
+    --texto-md: 1.125rem;
+
+    --texto-lg: 1.35rem;
+
+    --texto-xl: 1.8rem;
+
+    --texto-2xl: 2.4rem;
+
+    --texto-3xl: 3.3rem;
+
+
+    /* ------------------------------------------------------
+       ESPACIADO
+       ------------------------------------------------------ */
+
+    --espacio-1: 0.25rem;
+
+    --espacio-2: 0.5rem;
+
+    --espacio-3: 0.75rem;
+
+    --espacio-4: 1rem;
+
+    --espacio-5: 1.5rem;
+
+    --espacio-6: 2rem;
+
+    --espacio-7: 3rem;
+
+    --espacio-8: 4rem;
+
+    --espacio-9: 6rem;
+
+    --espacio-10: 8rem;
+
+
+    /* ------------------------------------------------------
+       RADIOS
+       ------------------------------------------------------ */
+
+    --radio-sm: 0.5rem;
+
+    --radio-md: 0.9rem;
+
+    --radio-lg: 1.5rem;
+
+    --radio-xl: 2rem;
+
+    --radio-redondo: 999px;
+
+
+    /* ------------------------------------------------------
+       SOMBRAS
+       ------------------------------------------------------ */
+
+    --sombra-suave:
+        0 8px 30px rgba(100, 70, 65, 0.08);
+
+    --sombra-media:
+        0 15px 45px rgba(100, 70, 65, 0.12);
+
+    --sombra-fuerte:
+        0 25px 70px rgba(100, 70, 65, 0.16);
+
+
+    /* ------------------------------------------------------
+       TRANSICIONES
+       ------------------------------------------------------ */
+
+    --transicion-rapida:
+        180ms ease;
+
+    --transicion-normal:
+        300ms ease;
+
+    --transicion-lenta:
+        500ms ease;
+
+
+    /* ------------------------------------------------------
+       ANCHOS
+       ------------------------------------------------------ */
+
+    --ancho-contenedor: 1180px;
+
+    --ancho-contenedor-pequeno: 900px;
+
+}
+
+
+/* ==========================================================
+   02. RESET GLOBAL
+   ========================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+html {
+    margin: 0;
+
+    padding: 0;
+
+    scroll-behavior: smooth;
+
+    font-size: 16px;
+}
+
+
+body {
+    margin: 0;
+
+    padding: 0;
+
+    background: var(--color-crema);
+
+    color: var(--color-texto);
+
+    font-family: var(--fuente-secundaria);
+
+    font-size: var(--texto-base);
+
+    line-height: 1.7;
+
+    overflow-x: hidden;
+}
+
+
+body,
+button,
+input,
+textarea,
+select {
+    font-family: var(--fuente-secundaria);
+}
+
+
+img,
+picture,
+svg,
+video {
+    display: block;
+
+    max-width: 100%;
+}
+
+
+img {
+    height: auto;
+}
+
+
+button,
+input,
+textarea,
+select {
+    font-size: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+a {
+    color: inherit;
+
+    text-decoration: none;
+}
+
+
+ul,
+ol {
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin-top: 0;
+}
+
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+
+::selection {
+    background: var(--color-rosa);
+
+    color: var(--color-blanco);
+}
+
+
+/* ==========================================================
+   03. TIPOGRAFÍA
+   ========================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-texto);
+
+    font-family: var(--fuente-principal);
+
+    font-weight: 600;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.02em;
+}
+
+
+h1 {
+    font-size: clamp(
+        2.4rem,
+        5vw,
+        var(--texto-3xl)
+    );
+}
+
+
+h2 {
+    font-size: clamp(
+        2rem,
+        4vw,
+        var(--texto-2xl)
+    );
+}
+
+
+h3 {
+    font-size: var(--texto-xl);
+}
+
+
+h4 {
+    font-size: 1.4rem;
+}
+
+
+h5 {
+    font-size: 1.2rem;
+}
+
+
+h6 {
+    font-size: 1rem;
+}
+
+
+p {
+    color: var(--color-texto-suave);
+
+    margin-bottom: var(--espacio-4);
+}
+
+
+strong {
+    color: var(--color-texto);
+}
+
+
+small {
+    font-size: var(--texto-sm);
+}
+
+
+/* ==========================================================
+   04. CONTENEDORES
+   ========================================================== */
+
+.container {
+    width: min(
+        calc(100% - 2rem),
+        var(--ancho-contenedor)
+    );
+
+    margin-inline: auto;
+}
+
+
+.container-small {
+    width: min(
+        calc(100% - 2rem),
+        var(--ancho-contenedor-pequeno)
+    );
+
+    margin-inline: auto;
+}
+
+
+/* ==========================================================
+   05. ESTRUCTURA DE SECCIONES
+   ========================================================== */
+
+section {
+    position: relative;
+}
+
+
+.section-heading {
+    width: min(
+        100%,
+        780px
+    );
+
+    margin-inline: auto;
+
+    margin-bottom: var(--espacio-7);
+
+    text-align: center;
+}
+
+
+.section-eyebrow,
+.hero-eyebrow {
+    display: inline-block;
+
+    margin-bottom: var(--espacio-3);
+
+    color: var(--color-rosa-oscuro);
+
+    font-family: var(--fuente-principal);
+
+    font-size: var(--texto-sm);
+
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+
+    line-height: 1.4;
+
+    text-transform: uppercase;
+}
+
+
+.section-title {
+    margin-bottom: var(--espacio-4);
+
+    color: var(--color-texto);
+}
+
+
+.section-description {
+    max-width: 720px;
+
+    margin-inline: auto;
+
+    color: var(--color-texto-suave);
+
+    font-size: var(--texto-md);
+}
+
+
+section:not(.page-hero-section) {
+    padding-block: var(--espacio-9);
+}
+
+
+/* ==========================================================
+   06. HEADER
+   ========================================================== */
+
+.site-header {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    width: 100%;
+
+    background:
+        rgba(
+            255,
+            250,
+            245,
+            0.94
+        );
+
+    border-bottom:
+        1px solid
+        rgba(
+            234,
+            219,
+            215,
+            0.8
+        );
+
+    backdrop-filter: blur(14px);
+}
+
+
+.header-container {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    min-height: 82px;
+
+    gap: var(--espacio-5);
+}
+
+
+/* ==========================================================
+   07. MARCA
+   ========================================================== */
+
+.brand {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: var(--espacio-3);
+
+    flex-shrink: 0;
+}
+
+
+.brand-icon {
+    display: grid;
+
+    width: 46px;
+
+    height: 46px;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--color-rosa-claro);
+
+    color: var(--color-rosa-oscuro);
+
+    font-size: 1.35rem;
+
+    box-shadow:
+        inset
+        0
+        0
+        0
+        1px
+        rgba(
+            169,
+            95,
+            109,
+            0.08
+        );
+}
+
+
+.brand-text {
+    display: flex;
+
+    flex-direction: column;
+
+    line-height: 1;
+}
+
+
+.brand-name {
+    color: var(--color-texto);
+
+    font-family: var(--fuente-principal);
+
+    font-size: 1.1rem;
+
+    font-weight: 700;
+
+    letter-spacing: -0.02em;
+}
+
+
+.brand-subtitle {
+    margin-top: 0.25rem;
+
+    color: var(--color-rosa-oscuro);
+
+    font-family: var(--fuente-principal);
+
+    font-size: 0.72rem;
+
+    font-weight: 500;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+}
+
+
+/* ==========================================================
+   08. NAVEGACIÓN
+   ========================================================== */
+
+.main-navigation {
+    display: block;
+}
+
+
+.navigation-list {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: var(--espacio-5);
+}
+
+
+.navigation-link {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 44px;
+
+    color: var(--color-texto-suave);
+
+    font-family: var(--fuente-principal);
+
+    font-size: var(--texto-sm);
+
+    font-weight: 500;
+
+    transition:
+        color var(--transicion-normal);
+}
+
+
+.navigation-link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 4px;
+
+    width: 0;
+
+    height: 2px;
+
+    margin-inline: auto;
+
+    background: var(--color-rosa);
+
+    border-radius: var(--radio-redondo);
+
+    transition:
+        width var(--transicion-normal);
+}
+
+
+.navigation-link:hover,
+.navigation-link:focus-visible,
+.navigation-link.active {
+    color: var(--color-rosa-oscuro);
+}
+
+
+.navigation-link:hover::after,
+.navigation-link:focus-visible::after,
+.navigation-link.active::after {
+    width: 70%;
+}
+
+
+/* ==========================================================
+   09. MENÚ MÓVIL
+   ========================================================== */
+
+.menu-button {
+    display: none;
+
+    width: 46px;
+
+    height: 46px;
+
+    padding: 0;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius: var(--radio-md);
+
+    background: var(--color-blanco);
+
+    color: var(--color-texto);
+}
+
+
+.menu-button span {
+    display: block;
+
+    width: 21px;
+
+    height: 2px;
+
+    background: currentColor;
+
+    border-radius: var(--radio-redondo);
+}
+
+
+/* ==========================================================
+   10. HERO GENERAL
+   ========================================================== */
+
+.page-hero-section {
+    min-height: 610px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding-block: var(--espacio-9);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-rosa-claro) 0%,
+            var(--color-crema) 55%,
+            var(--color-crema-oscuro) 100%
+        );
+
+    overflow: hidden;
+}
+
+
+.page-hero-container {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(320px, 0.85fr);
+
+    align-items: center;
+
+    gap: var(--espacio-9);
+}
+
+
+.page-hero-content {
+    max-width: 680px;
+}
+
+
+.page-hero-content .hero-eyebrow {
+    margin-bottom: var(--espacio-4);
+}
+
+
+.hero-title {
+    margin-bottom: var(--espacio-5);
+
+    color: var(--color-texto);
+
+    font-family: var(--fuente-principal);
+
+    font-weight: 700;
+}
+
+
+.hero-description {
+    max-width: 640px;
+
+    margin-bottom: 0;
+
+    color: var(--color-texto-suave);
+
+    font-size:
+        clamp(
+            1rem,
+            2vw,
+            1.2rem
+        );
+
+    line-height: 1.8;
+}
+
+
+.page-hero-media {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 360px;
+}
+
+
+.page-hero-image {
+    width: min(
+        100%,
+        520px
+    );
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+
+    border-radius: var(--radio-xl);
+
+    background: var(--color-crema-oscuro);
+
+    box-shadow: var(--sombra-media);
+}
+
+
+/* ==========================================================
+   11. INTRODUCCIONES
+   ========================================================== */
+
+.testimonials-intro-section,
+.memorial-intro-section {
+    background: var(--color-blanco);
+}
+
+
+.testimonials-intro-container {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.85fr)
+        minmax(0, 1.15fr);
+
+    gap: var(--espacio-8);
+
+    align-items: center;
+}
+
+
+.testimonials-intro-container .section-heading {
+    margin: 0;
+
+    text-align: left;
+}
+
+
+.testimonials-intro-container .section-description {
+    margin: 0;
+
+    max-width: none;
+}
+
+
+/* ==========================================================
+   12. TESTIMONIOS
+   ========================================================== */
+
+.testimonials-section {
+    background: var(--color-crema);
+}
+
+
+.testimonials-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: var(--espacio-5);
+}
+
+
+.testimonial-card {
+    position: relative;
+
+    padding: var(--espacio-7);
+
+    background: var(--color-blanco);
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius: var(--radio-lg);
+
+    box-shadow: var(--sombra-suave);
+}
+
+
+.testimonial-quote {
+    color: var(--color-rosa);
+
+    font-family: Georgia, serif;
+
+    font-size: 4rem;
+
+    line-height: 0.7;
+}
+
+
+.testimonial-rating {
+    margin-block: var(--espacio-4);
+
+    color: var(--color-dorado);
+
+    font-size: 0.9rem;
+
+    letter-spacing: 0.15em;
+}
+
+
+.testimonial-text {
+    margin-bottom: var(--espacio-6);
+
+    color: var(--color-texto);
+
+    font-family: var(--fuente-principal);
+
+    font-size: var(--texto-md);
+
+    font-style: italic;
+
+    line-height: 1.8;
+}
+
+
+.testimonial-author {
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--espacio-3);
+}
+
+
+.testimonial-avatar {
+    display: grid;
+
+    width: 46px;
+
+    height: 46px;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--color-rosa-claro);
+
+    color: var(--color-rosa-oscuro);
+
+    font-family: var(--fuente-principal);
+
+    font-weight: 700;
+}
+
+
+.testimonial-name {
+    margin-bottom: 0.15rem;
+
+    font-size: 1rem;
+}
+
+
+.testimonial-pet {
+    margin: 0;
+
+    color: var(--color-texto-claro);
+
+    font-size: var(--texto-sm);
+}
+
+
+/* ==========================================================
+   13. EXPERIENCIA EMOTIVA
+   ========================================================== */
+
+.testimonial-experience-section {
+    background: var(--color-rosa-claro);
+}
+
+
+.testimonial-experience-container {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(200px, 0.35fr);
+
+    align-items: center;
+
+    gap: var(--espacio-8);
+}
+
+
+.testimonial-experience-content {
+    max-width: 760px;
+}
+
+
+.testimonial-experience-content .section-description {
+    margin-inline: 0;
+}
+
+
+.testimonial-experience-symbol {
+    display: grid;
+
+    width: 180px;
+
+    height: 180px;
+
+    margin-inline: auto;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--color-blanco);
+
+    font-size: 4rem;
+
+    box-shadow: var(--sombra-media);
+}
+
+
+/* ==========================================================
+   14. FORMULARIOS
+   ========================================================== */
+
+.form-field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--espacio-2);
+
+    margin-bottom: var(--espacio-5);
+}
+
+
+.form-field label {
+    color: var(--color-texto);
+
+    font-family: var(--fuente-principal);
+
+    font-size: var(--texto-sm);
+
+    font-weight: 600;
+}
+
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+    width: 100%;
+
+    padding:
+        0.9rem
+        1rem;
+
+    color: var(--color-texto);
+
+    background: var(--color-blanco);
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius: var(--radio-md);
+
+    outline: none;
+
+    transition:
+        border-color var(--transicion-normal),
+        box-shadow var(--transicion-normal);
+}
+
+
+.form-field input,
+.form-field select {
+    min-height: 52px;
+}
+
+
+.form-field textarea {
+    min-height: 150px;
+
+    resize: vertical;
+}
+
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+    color: var(--color-texto-claro);
+}
+
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+    border-color: var(--color-rosa);
+
+    box-shadow:
+        0
+        0
+        0
+        4px
+        rgba(
+            217,
+            143,
+            156,
+            0.12
+        );
+}
+
+
+.form-help {
+    color: var(--color-texto-claro);
+
+    font-size: var(--texto-xs);
+}
+
+
+.optional {
+    color: var(--color-texto-claro);
+
+    font-weight: 400;
+}
+
+
+.form-field-checkbox {
+    display: block;
+}
+
+
+.checkbox-label {
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: flex-start;
+
+    gap: var(--espacio-3);
+
+    cursor: pointer;
+}
+
+
+.checkbox-label input[type="checkbox"] {
+    width: 20px;
+
+    min-height: 20px;
+
+    margin-top: 0.15rem;
+
+    accent-color: var(--color-rosa);
+}
+
+
+.checkbox-label span {
+    color: var(--color-texto-suave);
+
+    font-size: var(--texto-sm);
+
+    line-height: 1.6;
+}
+
+
+.form-actions {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: var(--espacio-3);
+
+    margin-top: var(--espacio-5);
+}
+
+
+.form-status {
+    min-height: 1.5rem;
+
+    margin-top: var(--espacio-4);
+
+    margin-bottom: 0;
+
+    font-size: var(--texto-sm);
+}
+
+
+.form-status.success {
+    color: var(--color-exito);
+}
+
+
+.form-status.error {
+    color: var(--color-error);
+}
+
+
+/* ==========================================================
+   15. FORMULARIO DE TESTIMONIOS
+   ========================================================== */
+
+.testimonial-form-section {
+    background: var(--color-blanco);
+}
+
+
+.testimonial-form-container {
+    width: min(
+        calc(100% - 2rem),
+        850px
+    );
+
+    margin-inline: auto;
+}
+
+
+.testimonial-form {
+    padding: var(--espacio-7);
+
+    background: var(--color-crema);
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius: var(--radio-lg);
+
+    box-shadow: var(--sombra-suave);
+}
+
+
+/* ==========================================================
+   16. FORMULARIO DE CONTACTO
+   ========================================================== */
+
+.contact-form-section {
+    background: var(--color-blanco);
+}
+
+
+.contact-form-container {
+    display: grid;
+
+    grid-template-columns:
+        minmax(260px, 0.7fr)
+        minmax(0, 1.3fr);
+
+    align-items: start;
+
+    gap: var(--espacio-8);
+}
+
+
+.contact-form-introduction {
+    position: sticky;
+
+    top: 120px;
+}
+
+
+.contact-form-introduction .section-description {
+    margin-inline: 0;
+}
+
+
+.contact-form {
+    padding: var(--espacio-7);
+
+    background: var(--color-crema);
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius: var(--radio-lg);
+
+    box-shadow: var(--sombra-suave);
+}
+
+
+/* ==========================================================
+   17. INFORMACIÓN DE CONTACTO
+   ========================================================== */
+
+.contact-information-section {
+    background: var(--color-crema);
+}
+
+
+.contact-methods-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: var(--espacio-5);
+}
+
+
+.contact-method-card {
+    padding: var(--espacio-6);
+
+    text-align: center;
+
+    background: var(--color-blanco);
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius: var(--radio-lg);
+
+    box-shadow: var(--sombra-suave);
+}
+
+
+.contact-method-icon {
+    display: grid;
+
+    width: 64px;
+
+    height: 64px;
+
+    margin:
+        0
+        auto
+        var(--espacio-4);
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--color-rosa-claro);
+
+    color: var(--color-rosa-oscuro);
+
+    font-size: 1.5rem;
+}
+
+
+.contact-method-card h3 {
+    margin-bottom: var(--espacio-3);
+
+    font-size: 1.25rem;
+}
+
+
+.contact-method-card p {
+    font-size: var(--texto-sm);
+}
+
+
+.contact-method-link {
+    color: var(--color-rosa-oscuro);
+
+    font-family: var(--fuente-principal);
+
+    font-size: var(--texto-sm);
+
+    font-weight: 600;
+}
+
+
+.contact-method-link:hover,
+.contact-method-link:focus-visible {
+    text-decoration: underline;
+}
+
+
+/* ==========================================================
+   18. REDES SOCIALES
+   ========================================================== */
+
+.social-section {
+    background: var(--color-crema-oscuro);
+}
+
+
+.social-links-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+
+    gap: var(--espacio-4);
+
+    max-width: 900px;
+
+    margin-inline: auto;
+}
+
+
+.social-link {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: var(--espacio-3);
+
+    min-height: 80px;
+
+    padding: var(--espacio-4);
+
+    background: var(--color-blanco);
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius: var(--radio-md);
+
+    color: var(--color-texto);
+
+    font-family: var(--fuente-principal);
+
+    font-weight: 600;
+
+    transition:
+        transform var(--transicion-normal),
+        border-color var(--transicion-normal),
+        box-shadow var(--transicion-normal);
+}
+
+
+.social-link:hover,
+.social-link:focus-visible {
+    transform: translateY(-4px);
+
+    border-color: var(--color-rosa);
+
+    box-shadow: var(--sombra-suave);
+}
+
+
+.social-icon {
+    display: grid;
+
+    width: 38px;
+
+    height: 38px;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--color-rosa-claro);
+
+    color: var(--color-rosa-oscuro);
+}
+
+
+/* ==========================================================
+   19. DETALLES DE CONTACTO
+   ========================================================== */
+
+.contact-details-section {
+    background: var(--color-blanco);
+}
+
+
+.contact-details-container {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(300px, 0.8fr);
+
+    gap: var(--espacio-8);
+
+    align-items: center;
+}
+
+
+.contact-details-content .section-description {
+    margin-inline: 0;
+}
+
+
+.contact-details-list {
+    display: grid;
+
+    gap: var(--espacio-4);
+}
+
+
+.contact-detail-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--espacio-4);
+
+    padding: var(--espacio-5);
+
+    background: var(--color-crema);
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius: var(--radio-md);
+}
+
+
+.contact-detail-icon {
+    display: grid;
+
+    width: 48px;
+
+    height: 48px;
+
+    flex-shrink: 0;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--color-rosa-claro);
+
+    font-size: 1.15rem;
+}
+
+
+.contact-detail-item h3 {
+    margin-bottom: 0.15rem;
+
+    font-size: 1rem;
+}
+
+
+.contact-detail-item p {
+    margin: 0;
+
+    font-size: var(--texto-sm);
+}
+
+
+/* ==========================================================
+   20. FAQ
+   ========================================================== */
+
+.faq-search-section {
+    background: var(--color-blanco);
+}
+
+
+.faq-search-form {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+    align-items: end;
+
+    gap: var(--espacio-4);
+
+    width: min(
+        100%,
+        850px
+    );
+
+    margin-inline: auto;
+}
+
+
+.faq-search-form .form-field {
+    margin-bottom: 0;
+}
+
+
+.faq-categories-section {
+    padding-top: 0 !important;
+
+    background: var(--color-blanco);
+}
+
+
+.faq-category-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: var(--espacio-3);
+}
+
+
+.faq-category-button {
+    min-height: 44px;
+
+    padding:
+        0.65rem
+        1.1rem;
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius: var(--radio-redondo);
+
+    background: var(--color-crema);
+
+    color: var(--color-texto-suave);
+
+    font-family: var(--fuente-principal);
+
+    font-size: var(--texto-sm);
+
+    font-weight: 600;
+
+    transition:
+        background var(--transicion-normal),
+        color var(--transicion-normal),
+        border-color var(--transicion-normal);
+}
+
+
+.faq-category-button:hover,
+.faq-category-button:focus-visible,
+.faq-category-button.active {
+    background: var(--color-rosa);
+
+    border-color: var(--color-rosa);
+
+    color: var(--color-blanco);
+}
+
+
+.faq-list-section {
+    background: var(--color-crema);
+}
+
+
+.faq-list {
+    width: min(
+        100%,
+        900px
+    );
+
+    margin-inline: auto;
+}
+
+
+.faq-item {
+    margin-bottom: var(--espacio-3);
+
+    background: var(--color-blanco);
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius: var(--radio-md);
+
+    overflow: hidden;
+}
+
+
+.faq-question {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    width: 100%;
+
+    min-height: 72px;
+
+    padding:
+        var(--espacio-4)
+        var(--espacio-5);
+
+    gap: var(--espacio-4);
+
+    border: 0;
+
+    background: transparent;
+
+    color: var(--color-texto);
+
+    font-family: var(--fuente-principal);
+
+    font-size: var(--texto-base);
+
+    font-weight: 600;
+
+    text-align: left;
+}
+
+
+.faq-question:hover,
+.faq-question:focus-visible {
+    background: var(--color-rosa-suave);
+}
+
+
+.faq-icon {
+    display: grid;
+
+    width: 34px;
+
+    height: 34px;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--color-rosa-claro);
+
+    color: var(--color-rosa-oscuro);
+
+    font-size: 1.2rem;
+}
+
+
+.faq-answer {
+    border-top:
+        1px solid
+        var(--color-borde);
+}
+
+
+.faq-answer-content {
+    padding:
+        var(--espacio-5)
+        var(--espacio-6);
+}
+
+
+.faq-answer-content p {
+    font-size: var(--texto-sm);
+}
+
+
+.faq-empty-state {
+    width: min(
+        100%,
+        600px
+    );
+
+    margin:
+        var(--espacio-7)
+        auto
+        0;
+
+    padding: var(--espacio-7);
+
+    text-align: center;
+
+    background: var(--color-blanco);
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius: var(--radio-lg);
+
+    box-shadow: var(--sombra-suave);
+}
+
+
+.faq-empty-icon {
+    display: block;
+
+    margin-bottom: var(--espacio-3);
+
+    font-size: 2rem;
+}
+
+
+.faq-empty-state h3 {
+    margin-bottom: var(--espacio-3);
+
+    font-size: var(--texto-lg);
+}
+
+
+.faq-contact-section {
+    background: var(--color-blanco);
+}
+
+
+.faq-contact-container {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: var(--espacio-7);
+}
+
+
+.faq-contact-content .section-description {
+    margin-inline: 0;
+}
+
+
+/* ==========================================================
+   21. MEMORIAL
+   ========================================================== */
+
+.memorial-search-section {
+    background: var(--color-blanco);
+}
+
+
+.memorial-search-form {
+    width: min(
+        100%,
+        850px
+    );
+
+    margin-inline: auto;
+}
+
+
+.memorial-filter-section {
+    padding-top: 0 !important;
+
+    background: var(--color-blanco);
+}
+
+
+.memorial-filter-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: var(--espacio-3);
+}
+
+
+.memorial-filter-button {
+    min-height: 44px;
+
+    padding:
+        0.65rem
+        1.1rem;
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius: var(--radio-redondo);
+
+    background: var(--color-crema);
+
+    color: var(--color-texto-suave);
+
+    font-family: var(--fuente-principal);
+
+    font-size: var(--texto-sm);
+
+    font-weight: 600;
+}
+
+
+.memorial-filter-button.active,
+.memorial-filter-button:hover,
+.memorial-filter-button:focus-visible {
+    background: var(--color-rosa);
+
+    border-color: var(--color-rosa);
+
+    color: var(--color-blanco);
+}
+
+
+.memorial-gallery-section {
+    background: var(--color-crema);
+}
+
+
+.memorial-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+
+    gap: var(--espacio-5);
+}
+
+
+.memorial-card {
+    overflow: hidden;
+
+    background: var(--color-blanco);
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius: var(--radio-lg);
+
+    box-shadow: var(--sombra-suave);
+}
+
+
+.memorial-card-image {
+    width: 100%;
+
+    aspect-ratio: 4 / 3;
+
+    object-fit: cover;
+
+    background: var(--color-crema-oscuro);
+}
+
+
+.memorial-card-content {
+    padding: var(--espacio-5);
+}
+
+
+.memorial-card-name {
+    margin-bottom: var(--espacio-2);
+
+    font-size: 1.25rem;
+}
+
+
+.memorial-card-description {
+    font-size: var(--texto-sm);
+}
+
+
+.memorial-card-meta {
+    color: var(--color-texto-claro);
+
+    font-size: var(--texto-xs);
+}
+
+
+.memorial-empty-state {
+    width: min(
+        100%,
+        600px
+    );
+
+    margin:
+        var(--espacio-7)
+        auto
+        0;
+
+    padding: var(--espacio-7);
+
+    text-align: center;
+
+    background: var(--color-blanco);
+
+    border:
+        1px solid
+        var(--color-borde);
+
+    border-radius: var(--radio-lg);
+}
+
+
+.memorial-create-section {
+    background: var(--color-blanco);
+}
+
+
+.memorial-create-container {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(260px, 0.7fr);
+
+    align-items: center;
+
+    gap: var(--espacio-8);
+}
+
+
+.memorial-create-content .section-description {
+    margin-inline: 0;
+}
+
+
+.memorial-create-symbol {
+    display: grid;
+
+    width: 190px;
+
+    height: 190px;
+
+    margin-inline: auto;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--color-rosa-claro);
+
+    font-size: 4rem;
+
+    box-shadow: var(--sombra-media);
+}
+
+
+/* ==========================================================
+   22. CTA
+   ========================================================== */
+
+.cta-section {
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-rosa-claro),
+            var(--color-crema-oscuro)
+        );
+
+    text-align: center;
+}
+
+
+.cta-container {
+    width: min(
+        calc(100% - 2rem),
+        850px
+    );
+
+    margin-inline: auto;
+}
+
+
+.cta-title {
+    margin-bottom: var(--espacio-4);
+
+    color: var(--color-texto);
+
+    font-size:
+        clamp(
+            2rem,
+            4vw,
+            2.8rem
+        );
+}
+
+
+.cta-description {
+    max-width: 650px;
+
+    margin:
+        0
+        auto
+        var(--espacio-6);
+
+    font-size: var(--texto-md);
+}
+
+
+.cta-actions {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: var(--espacio-3);
+}
+
+
+/* ==========================================================
+   23. BOTONES BASE
+   ========================================================== */
+
+.button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 50px;
+
+    padding:
+        0.75rem
+        1.35rem;
+
+    border:
+        1px solid
+        transparent;
+
+    border-radius: var(--radio-redondo);
+
+    font-family: var(--fuente-principal);
+
+    font-size: var(--texto-sm);
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    text-align: center;
+
+    transition:
+        transform var(--transicion-normal),
+        background var(--transicion-normal),
+        color var(--transicion-normal),
+        border-color var(--transicion-normal),
+        box-shadow var(--transicion-normal);
+}
+
+
+.button:hover,
+.button:focus-visible {
+    transform: translateY(-2px);
+}
+
+
+.button-primary {
+    background: var(--color-rosa);
+
+    border-color: var(--color-rosa);
+
+    color: var(--color-blanco);
+
+    box-shadow:
+        0
+        8px
+        20px
+        rgba(
+            169,
+            95,
+            109,
+            0.18
+        );
+}
+
+
+.button-primary:hover,
+.button-primary:focus-visible {
+    background: var(--color-rosa-oscuro);
+
+    border-color: var(--color-rosa-oscuro);
+}
+
+
+.button-secondary {
+    background: var(--color-blanco);
+
+    border-color: var(--color-borde);
+
+    color: var(--color-texto);
+}
+
+
+.button-secondary:hover,
+.button-secondary:focus-visible {
+    border-color: var(--color-rosa);
+
+    color: var(--color-rosa-oscuro);
+}
+
+
+/* ==========================================================
+   24. FOOTER
+   ========================================================== */
+
+.site-footer {
+    background: #403433;
+
+    color: var(--color-blanco);
+}
+
+
+.footer-container {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.4fr)
+        minmax(150px, 0.6fr)
+        minmax(150px, 0.6fr);
+
+    gap: var(--espacio-8);
+
+    padding-block: var(--espacio-8);
+}
+
+
+.site-footer .brand-name {
+    color: var(--color-blanco);
+}
+
+
+.site-footer .brand-subtitle {
+    color: var(--color-rosa-claro);
+}
+
+
+.site-footer .brand-icon {
+    background:
+        rgba(
+            247,
+            232,
+            228,
+            0.12
+        );
+
+    color: var(--color-rosa-claro);
+}
+
+
+.footer-description {
+    max-width: 500px;
+
+    margin-top: var(--espacio-4);
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.72
+        );
+
+    font-size: var(--texto-sm);
+}
+
+
+.footer-title {
+    margin-bottom: var(--espacio-4);
+
+    color: var(--color-blanco);
+
+    font-size: 1rem;
+
+    letter-spacing: 0;
+}
+
+
+.footer-navigation ul,
+.footer-information ul {
+    display: grid;
+
+    gap: var(--espacio-2);
+}
+
+
+.footer-navigation a,
+.footer-information a {
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.72
+        );
+
+    font-size: var(--texto-sm);
+
+    transition:
+        color var(--transicion-normal);
+}
+
+
+.footer-navigation a:hover,
+.footer-navigation a:focus-visible,
+.footer-information a:hover,
+.footer-information a:focus-visible {
+    color: var(--color-blanco);
+}
+
+
+.footer-bottom {
+    border-top:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.1
+        );
+}
+
+
+.footer-bottom .container {
+    padding-block: var(--espacio-4);
+}
+
+
+.footer-bottom p {
+    margin: 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.55
+        );
+
+    font-size: var(--texto-xs);
+
+    text-align: center;
+}
+
+
+/* ==========================================================
+   25. ACCESIBILIDAD
+   ========================================================== */
+
+:focus-visible {
+    outline:
+        3px solid
+        rgba(
+            217,
+            143,
+            156,
+            0.45
+        );
+
+    outline-offset: 3px;
+}
+
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* ==========================================================
+   26. UTILIDADES
+   ========================================================== */
+
+.text-center {
+    text-align: center;
+}
+
+
+.text-left {
+    text-align: left;
+}
+
+
+.text-right {
+    text-align: right;
+}
+
+
+.visually-hidden {
+    position: absolute !important;
+
+    width: 1px !important;
+
+    height: 1px !important;
+
+    padding: 0 !important;
+
+    margin: -1px !important;
+
+    overflow: hidden !important;
+
+    clip:
+        rect(
+            0,
+            0,
+            0,
+            0
+        ) !important;
+
+    white-space: nowrap !important;
+
+    border: 0 !important;
+}
+
+
+/* ==========================================================
+   27. RESPONSIVE BASE — TABLET
+   ========================================================== */
+
+@media (max-width: 1100px) {
+
+    .navigation-list {
+        gap: var(--espacio-3);
+    }
+
+
+    .navigation-link {
+        font-size: 0.8rem;
+    }
+
+
+    .page-hero-container {
+        gap: var(--espacio-6);
+    }
+
+
+    .memorial-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+}
+
+
+/* ==========================================================
+   28. RESPONSIVE — 900PX
+   ========================================================== */
+
+/* ==========================================================
+   MENÚ MÓVIL ABIERTO
+   ========================================================== */
+
+@media (max-width: 900px) {
+
+    .main-navigation.active {
+        display: block;
+    }
+
+    .main-navigation.active .navigation-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--espacio-3);
+    }
+
+    .header-container {
+        min-height: 74px;
+    }
+
+
+    .menu-button {
+        display: flex;
+    }
+
+
+    .main-navigation {
+        display: none;
+    }
+
+
+    .page-hero-section {
+        min-height: auto;
+
+        padding-block: var(--espacio-8);
+    }
+
+
+    .page-hero-container {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+    }
+
+
+    .page-hero-content {
+        max-width: 760px;
+
+        margin-inline: auto;
+    }
+
+
+    .hero-description {
+        margin-inline: auto;
+    }
+
+
+    .page-hero-media {
+        min-height: auto;
+    }
+
+
+    .page-hero-image {
+        width: min(
+            100%,
+            460px
+        );
+    }
+
+
+    .testimonials-intro-container,
+    .testimonial-experience-container,
+    .contact-details-container,
+    .memorial-create-container {
+        grid-template-columns: 1fr;
+    }
+
+
+    .testimonials-intro-container .section-heading {
+        text-align: center;
+    }
+
+
+    .testimonial-experience-content .section-description,
+    .contact-details-content .section-description,
+    .memorial-create-content .section-description {
+        margin-inline: auto;
+    }
+
+
+    .testimonial-experience-container {
+        text-align: center;
+    }
+
+
+    .testimonial-experience-symbol,
+    .memorial-create-symbol {
+        margin-inline: auto;
+    }
+
+
+    .contact-form-container {
+        grid-template-columns: 1fr;
+    }
+
+
+    .contact-form-introduction {
+        position: static;
+    }
+
+
+    .contact-methods-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .social-links-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .faq-contact-container {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+
+    .faq-contact-content .section-description {
+        margin-inline: auto;
+    }
+
+
+    .footer-container {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* ==========================================================
+   29. RESPONSIVE — 700PX
+   ========================================================== */
+
+@media (max-width: 700px) {
+
+    :root {
+
+        --espacio-8: 3rem;
+
+        --espacio-9: 4rem;
+
+    }
+
+
+    .container {
+        width: min(
+            calc(100% - 1.5rem),
+            var(--ancho-contenedor)
+        );
+    }
+
+
+    section:not(.page-hero-section) {
+        padding-block: var(--espacio-8);
+    }
+
+
+    .page-hero-container {
+        gap: var(--espacio-5);
+    }
+
+
+    .page-hero-image {
+        width: 100%;
+    }
+
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .contact-methods-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .social-links-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .faq-search-form {
+        grid-template-columns: 1fr;
+    }
+
+
+    .faq-search-form .button {
+        width: 100%;
+    }
+
+
+    .memorial-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .testimonial-form,
+    .contact-form {
+        padding: var(--espacio-5);
+    }
+
+
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+
+    .form-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .form-actions .button {
+        width: 100%;
+    }
+
+
+    .cta-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .cta-actions .button {
+        width: 100%;
+    }
+
+}
+
+
+/* ==========================================================
+   30. RESPONSIVE — 480PX
+   ========================================================== */
+
+@media (max-width: 480px) {
+
+    .brand-icon {
+        width: 40px;
+
+        height: 40px;
+    }
+
+
+    .brand-name {
+        font-size: 1rem;
+    }
+
+
+    .brand-subtitle {
+        font-size: 0.65rem;
+    }
+
+
+    .page-hero-section {
+        padding-block: var(--espacio-7);
+    }
+
+
+    .testimonial-card {
+        padding: var(--espacio-5);
+    }
+
+
+    .faq-question {
+        min-height: 64px;
+
+        padding:
+            var(--espacio-3)
+            var(--espacio-4);
+    }
+
+
+    .faq-answer-content {
+        padding:
+            var(--espacio-4);
+    }
+
+}
+
+
+/* ==========================================================
+   FIN DE 2A — styles.css
+============================================================ */
