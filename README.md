@@ -6,13 +6,13 @@ Ofrecemos nuestros servicios al +51 941 030 152
 
 Mi equipo comformado por:
 
-. Josue Aaron       --- Creador de la pagina Web. 
+. Josué Aarón        --- Creador de la pagina Web. 
 
-. Anghelina Araceli --- Cradora de ideas e producto. 
+. Anghelina Araceli  --- Creadora de ideas e producto. 
 
-. Marcos Aldair     --- Apoyo en la elaboración de la pagina web. 
+. Marcos Aldair      --- Apoyo en la elaboración de la pagina web. 
 
-. Angelique Yamile  --- Creadora del producto. 
+. Angelique Yamile   --- Creadora del producto. 
 
 ## INFORMACIÓN AL CONTACTO +51 941 030 152 
 
