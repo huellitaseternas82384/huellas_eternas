@@ -1,41 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>404 | Huellitas Eternas</title>
-    <meta name="description" content="La página que buscas no fue encontrada.">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="icon" href="assets/images/icons/favicon.svg" type="image/svg+xml">
+    <meta
+        name="description"
+        content="error"
+    >
 
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/botones.css">
-    <link rel="stylesheet" href="css/animaciones.css">
-    <link rel="stylesheet" href="css/scroll.css">
+    <meta
+        name="author"
+        content="Huellitas Eternas"
+    >
+
+    <meta
+        name="theme-color"
+        content="#f7e8e4"
+    >
+
+    <title>
+        Huellitas Eternas | ERROR 404
+    </title>
+
+
+    <!-- ICONOS: serán creados posteriormente dentro de assets/ -->
+
+    <link
+        rel="icon"
+        type="image/x-icon"
+        href="0101-0000-0100-1101/003/images/favicon.svg">
+
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="0101-0000-0100-1101/001/css/s.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="0101-0000-0100-1101/001/css/c.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="0101-0000-0100-1101/001/css/b.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="0101-0000-0100-1101/001/css/a.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="0101-0000-0100-1101/001/css/sc.css"
+    >
+
 </head>
 
-<body class="error-page">
+
+<body>
 
     <!-- =====================================================
-         ENCABEZADO
+         HEADER
          ===================================================== -->
 
-    <header class="site-header" id="inicio" data-animation="fade-down">
+    <header
+        class="site-header"
+        id="inicio"
+    >
 
         <div class="container header-container">
 
-            <a href="index.html"
-               class="brand"
-               aria-label="Huellitas Eternas - Inicio"
-               data-animation="fade-right">
+
+            <!-- ==================== MARCA ==================== -->
+
+            <a
+                class="brand"
+                aria-label="Huellitas Eternas - Inicio"
+                data-animation="fade-right"
+            >
 
                 <span
                     class="brand-icon"
                     aria-hidden="true"
                 >
                     <img
-                        src="assets/images/icons/icon.svg"
+                        src="0101-0000-0100-1101/003/images/icon.png"
                         alt="logo"
                     >
                 </span>
@@ -56,80 +116,29 @@
             </a>
 
 
-            <nav class="main-navigation"
-                 id="main-navigation"
-                 aria-label="Navegación principal">
+            <!-- ==================== NAVEGACIÓN ==================== -->
+
+            <nav
+                class="main-navigation"
+                id="main-navigation"
+                aria-label="Navegación principal"
+            >
 
                 <ul class="navigation-list">
-
-                    <li>
-                        <a href="index.html"
-                           class="navigation-link">
-                            Inicio
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="index.html#nosotros"
-                           class="navigation-link">
-                            Nosotros
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="index.html#producto"
-                           class="navigation-link">
-                            Producto
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="como-funciona.html"
-                           class="navigation-link">
-                            Cómo funciona
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="memorial.html"
-                           class="navigation-link active"
-                           aria-current="page">
-                            Memorial
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="testimonios.html"
-                           class="navigation-link">
-                            Testimonios
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="preguntas.html"
-                           class="navigation-link">
-                            Preguntas
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="contacto.html"
-                           class="navigation-link">
-                            Contacto
-                        </a>
-                    </li>
-
-                </ul>
 
             </nav>
 
 
-            <button type="button"
-                    class="menu-button"
-                    id="menu-button"
-                    aria-label="Abrir menú"
-                    aria-expanded="false"
-                    aria-controls="main-navigation">
+            <!-- ==================== MENÚ MÓVIL ==================== -->
+
+            <button
+                type="button"
+                class="menu-button"
+                id="menu-button"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="main-navigation"
+            >
 
                 <span></span>
                 <span></span>
@@ -137,309 +146,93 @@
 
             </button>
 
+
         </div>
 
     </header>
 
 
+
+        <!-- =====================================================
+         CONTENIDO PRINCIPAL
+         ===================================================== -->
+
     <main id="contenido-principal">
 
-        <section class="error-404-section"
-                 aria-labelledby="error-title">
 
-            <div class="container error-404-container">
+        <!-- ==================================================
+             HERO
+             ================================================== -->
 
-                <div class="error-404-content"
-                     data-animation="fade-up">
+        <section
+            class="page-hero-section"
+            aria-labelledby="page-title"
+        >
 
-                    <div class="error-404-paw"
-                         aria-hidden="true"
-                         data-animation="zoom-in">
-                        🐾
-                    </div>
+            <div class="container page-hero-container">
 
-                    <p class="error-404-code"
-                       data-animation="fade-down">
-                        ERROR 404
+
+                <div
+                    class="page-hero-content"
+                    data-animation="fade-left"
+                >
+
+
+                    <p
+                        class="hero-eyebrow"
+                        data-animation="fade-up"
+                    >
+                        HUELLITAS ETERNAS
                     </p>
 
-                    <h1 id="error-title"
-                        class="error-404-title"
+
+                    <h1
+                        id="page-title"
+                        class="hero-title"
                         data-animation="fade-up"
-                        data-delay="100">
-                        Esta huellita se perdió.
+                        data-delay="100"
+                    >
+                        ERROR 404
                     </h1>
 
-                    <p class="error-404-description"
-                       data-animation="fade-up"
-                       data-delay="200">
-                        Parece que la página que buscas no existe,
-                        fue movida o la dirección que escribiste
-                        tiene algún pequeño error.
+
+                    <p
+                        class="hero-description"
+                        data-animation="fade-up"
+                        data-delay="200"
+                    >
+                        Esta Huellitas se perdio, sera enviado a nuestra pagina principal en 5 segundos
                     </p>
 
-                    <div class="error-404-actions"
-                         data-animation="fade-up"
-                         data-delay="300">
-
-                        <a href="index.html"
-                           class="button button-primary">
-                            🏠 Volver al inicio
-                        </a>
-
-                        <a href="memorial.html"
-                           class="button button-secondary">
-                            🐾 Ver memoriales
-                        </a>
-
-                    </div>
-                </div>
-
-
-                <div class="error-404-message"
-                     data-animation="fade-up"
-                     data-delay="400">
-
-                    <span aria-hidden="true">💗</span>
-
-                    <p>
-                        No te preocupes.
-                        <strong>Tu camino continúa aquí.</strong>
-                    </p>
 
                 </div>
 
-            </div>
+                <div
+                    class="page-hero-media"
+                    data-animation="fade-right"
+                    data-delay="200"
+                >
 
-        </section>
-
-
-        <section class="error-404-help"
-                 data-animation="fade-up">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <p class="section-eyebrow">
-                        ¿Buscabas algo?
-                    </p>
-
-                    <h2 class="section-title">
-                        Puedes continuar desde aquí.
-                    </h2>
+                    <img
+                        src="0101-0000-0100-1101/003/images/Huellitas-404.png"
+                        alt="happy-dog"
+                        class="page-hero-image"
+                    >
 
                 </div>
 
-
-                <div class="error-404-links">
-
-                    <a href="index.html"
-                       class="error-404-link"
-                       data-animation="fade-up"
-                       data-delay="100">
-                        <span aria-hidden="true">🏠</span>
-                        <span>
-                            <strong>Inicio</strong>
-                            <small>Regresa a la página principal.</small>
-                        </span>
-                    </a>
-
-                    <a href="memorial.html"
-                       class="error-404-link"
-                       data-animation="fade-up"
-                       data-delay="200">
-                        <span aria-hidden="true">🐾</span>
-                        <span>
-                            <strong>Memorial</strong>
-                            <small>Conoce las historias de nuestras mascotas.</small>
-                        </span>
-                    </a>
-
-                    <a href="como-funciona.html"
-                       class="error-404-link"
-                       data-animation="fade-up"
-                       data-delay="300">
-                        <span aria-hidden="true">✨</span>
-                        <span>
-                            <strong>Cómo funciona</strong>
-                            <small>Descubre cómo funciona Huellitas Eternas.</small>
-                        </span>
-                    </a>
-
-                    <a href="contacto.html"
-                       class="error-404-link"
-                       data-animation="fade-up"
-                       data-delay="400">
-                        <span aria-hidden="true">💌</span>
-                        <span>
-                            <strong>Contacto</strong>
-                            <small>¿Necesitas ayuda? Escríbenos.</small>
-                        </span>
-                    </a>
-
                 </div>
-
-            </div>
-
-        </section>
 
     </main>
 
+    <!-- JavaScript de carga -->
+    <script src="0101-0000-0100-1101/002/js/c.js"></script>
 
-    <button type="button"
-            class="back-to-top"
-            id="back-to-top"
-            aria-label="Volver arriba">
-        ↑
-    </button>
+    <script src="0101-0000-0100-1101/002/js/s.js"></script>
 
+    <script src="0101-0000-0100-1101/002/js/a.js"></script>
 
-    <!-- =====================================================
-         FOOTER
-         ===================================================== -->
-
-    <footer class="site-footer" data-animation="fade-up">
-
-        <div class="container footer-container">
-
-            <div class="footer-brand" data-animation="fade-up">
-
-                <a href="index.html"
-                   class="brand"
-                   aria-label="Volver al inicio">
-
-                    <span
-                    class="brand-icon"
-                    aria-hidden="true"
-                >
-                    <img
-                        src="assets/images/icons/icon-1.svg"
-                        alt="logo"
-                    >
-                </span>
-
-
-                    <span class="brand-text">
-
-                        <span class="brand-name">
-                            Huellitas
-                        </span>
-
-                        <span class="brand-subtitle">
-                            Eternas
-                        </span>
-
-                    </span>
-
-                </a>
-
-                <p class="footer-description">
-                    Un espacio para recordar, honrar y conservar
-                    las historias de quienes dejaron una huellita
-                    en nuestras vidas.
-                </p>
-
-            </div>
-
-
-            <div class="footer-navigation" data-animation="fade-up" data-delay="100">
-
-                <h2 class="footer-title">
-                    Explora
-                </h2>
-
-                <ul>
-
-                    <li>
-                        <a href="index.html">
-                            Inicio
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="index.html#nosotros">
-                            Nosotros
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="index.html#producto">
-                            Producto
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="como-funciona.html">
-                            Cómo funciona
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="contacto.html">
-                            Contacto
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-            <div class="footer-information" data-animation="fade-up" data-delay="200">
-
-                <h2 class="footer-title">
-                    Información
-                </h2>
-
-                <ul>
-
-                    <li>
-                        <a href="memorial.html">
-                            Memorial
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="testimonios.html">
-                            Testimonios
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="preguntas.html">
-                            Preguntas frecuentes
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
-
-            <div class="container">
-
-                <p>
-                    © 2026 Huellitas Eternas.
-                    Todos los derechos reservados.
-                </p>
-
-            </div>
-
-        </div>
-
-    </footer>
-
-
-    <script src="js/script.js" defer></script>
-    <script src="js/botones.js" defer></script>
-    <script src="js/animaciones.js" defer></script>
-    <script src="js/scroll.js" defer></script>
-    <script src="js/sounds.js" defer></script>
+    <script src="0101-0000-0100-1101/002/js/sc.js"></script>
 
 </body>
 </html>
